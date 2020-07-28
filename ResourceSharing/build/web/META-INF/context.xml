@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/ResourceSharing">
+    <Resource auth="Container" 
+              driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" 
+              name="ResoureSharing" password="123456789" 
+              type="javax.sql.DataSource" 
+              url="jdbc:sqlserver://myrdstest7.cggabsmh0zyo.us-east-2.rds.amazonaws.com:1433;databaseName=ResoureSharing;instanceName=SQLEXPRESS" 
+              username="minhtri"/>
+</Context>

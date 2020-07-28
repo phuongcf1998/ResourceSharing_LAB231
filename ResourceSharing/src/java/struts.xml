@@ -1,0 +1,134 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    
+    <package name="default" extends="struts-default" namespace="/">
+        <action name="">
+            <result>login.html</result>
+        </action>
+        <action name="login" class="phuongntd.action.LoginAction">
+            <result name="denied" >access_denied.html</result>
+            <result name="user" type="redirectAction">
+                <param name="actionName">initCategory</param>
+            </result>
+            <result name="manager" type="redirectAction">
+                <param name="actionName">initCategory</param>
+            </result>
+            <result name="fail" type="redirect">invalid.html</result>
+        </action>
+        
+        <action name="logOut" class="phuongntd.action.LogOutAction">
+            <result name="success" type="redirect">login.html</result>
+        </action>
+        <action name="loginWithGoogle" class="phuongntd.action.LoginWithGoogleAction">
+            <result name="denied" >access_denied.html</result>
+            
+            <result name="user" type="redirectAction">
+                <param name="actionName">initCategory</param>
+            </result>
+            <result name="manager" type="redirectAction">
+                <param name="actionName">initStatus</param>
+            </result>
+            <result name="fail" type="redirect">invalid.html</result>
+        </action>
+        <action name="createAccount" class="phuongntd.action.CreateNewAccountAction">
+           
+            <result name="success" type="redirect">login.html</result>
+            <result name="input">create_account.jsp</result>
+            <result name="duplicate">create_account.jsp</result>
+        </action>
+        <action name="verifyAccount" class="phuongntd.action.VerifyAccountAction">
+            <result name="success" type="redirect">login.html</result>
+            <result name="fail" type="redirect">invalid.html</result>
+        </action>
+        <action name="searchResourceUser" class="phuongntd.action.SearchResourceUserAction">
+            <result name="success">user.jsp</result>
+            <result name="fail" type="redirect">login.html</result>
+        </action>
+        <action name="searchResourceManager" class="phuongntd.action.SearchResourceManagerAction">
+            <result name="success">manager.jsp</result>
+            <result name="fail" type="redirect">login.html</result>
+        </action>
+        <action name="addToCart" class="phuongntd.action.AddToCartAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">searchResourceUser</param>
+                <param name="name">${name}</param>
+                <param name="category">${category}</param>
+                <param name="fromDate">${fromDate}</param>
+                <param name="toDate">${toDate}</param>
+                <param name="page">${page}</param>
+                <param name="fullQuantity">${fullQuantity}</param>
+            </result>
+            <result name="fail" type="redirect">login.html</result>
+        </action>
+       
+        <action name="updateCart" class="phuongntd.action.UpdateCartAction">
+            <result name="success">view_cart.jsp</result>
+            <result name="fail" type="redirect">login.html</result>
+        </action>
+        <action name="remove" class="phuongntd.action.RemoveItemCartAction">
+            <result name="success">view_cart.jsp</result>
+            <result name="fail" type="redirect">login.html</result>
+        </action>
+        <action name="book" class="phuongntd.action.BookAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">initCategory</param>
+            </result>
+         
+            <result name="fail" type="redirect">login.html</result>
+        </action>
+        <action name="viewHistory" class="phuongntd.action.ViewHistoryAction">
+            <result name="success">view_history.jsp</result>
+            <result name="fail" type="redirect">login.html</result>
+        </action>
+        
+        <action name="cancelRequest" class="phuongntd.action.DeleteRequestByUserAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">viewHistory</param>
+              
+            </result>
+            <result name="fail" type="redirect">login.html</result>
+            <result name="executed" type="redirect">handle_request_error.jsp</result>
+        </action>
+        <action name="searchRequest" class="phuongntd.action.SearchRequestHistoryAction">
+            <result name="success">view_history.jsp</result>
+            <result name="fail" type="redirect">login.html</result>
+        </action>
+        <action name="viewDetail" class="phuongntd.action.ViewDetailRequestAction">
+            <result name="success">view_request_detail.jsp</result>
+            <result name="fail" type="redirect">login.html</result>
+        </action>
+        
+        <action name="initStatus" class="phuongntd.action.InitStatusAction">
+            <result name="success">handle_request.jsp</result>
+            <result name="fail" type="redirect">login.html</result>
+        </action>
+        <action name="initCategory" class="phuongntd.action.InitCategoryAction">
+            <result name="success_user">user.jsp</result>
+            <result name="success_manager">manager.jsp</result>
+            <result name="fail" type="redirect">login.html</result>
+        </action>
+        <action name="searchManager" class="phuongntd.action.SearchRequestForManagerAction">
+            <result name="success">handle_request.jsp</result>
+            <result name="fail" type="redirect">login.html</result>
+        </action>
+        <action name="processRequest" class="phuongntd.action.ProcessRequestAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">searchManager</param>
+                <param name="resourceName">${resourceName}</param>
+                <param name="userID">${userID}</param>
+                <param name="requestDate">${requestDate}</param>
+                <param name="slStatus">${slStatus}</param>
+                <param name="page">${page}</param>
+            </result>
+            <result name="fail" type="redirect">login.html</result>
+            <result name="executed" type="redirect">handle_request_error.jsp</result>
+        </action>
+        <action name="viewCart" class="phuongntd.action.ViewCartAction">
+            <result name="success">view_cart.jsp</result>
+            <result name="fail" type="redirect">login.html</result>
+        </action>
+    </package>
+</struts>

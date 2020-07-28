@@ -1,0 +1,3 @@
+Server name : myrdstest7.cggabsmh0zyo.us-east-2.rds.amazonaws.com
+user : minhtri
+password : 123456789

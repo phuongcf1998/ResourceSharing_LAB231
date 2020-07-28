@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Login Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--===============================================================================================-->	
+        <link rel="icon" type="image/png" href="resource/images/icons/favicon.ico"/>
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="resource/vendor/bootstrap/css/bootstrap.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="resource/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="resource/vendor/animate/animate.css">
+        <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="resource/vendor/css-hamburgers/hamburgers.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="resource/vendor/select2/select2.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="resource/css/util.css">
+        <link rel="stylesheet" type="text/css" href="resource/css/main.css">
+        <link rel="stylesheet" type="text/css" href="resource/css/google.css">
+        <!--===============================================================================================-->
+    </head>
+    <body>
+
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100">
+                    <div class="login100-pic js-tilt" data-tilt>
+                        <img src="resource/images/img-01.png" alt="IMG">
+
+
+                    </div>
+
+
+                    <div style="display: flex;justify-content: center;flex-direction: column">
+
+                        <form id="form-login" class="login100-form validate-form" action="login" method="POST">
+                            <span class="login100-form-title">
+                                Member Login
+                            </span>
+
+                            <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                                <input class="input100" type="text" name="username" placeholder="Email">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                </span>
+                            </div>
+
+                            <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                                <input class="input100" type="password" name="password" placeholder="Password">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <div class="wrap-input100 validate-input">
+                                <div class="g-recaptcha" data-sitekey="6LfHPKoZAAAAAJhFeVrO5AUrOXwvPwA_r_ztXKgM"></div>
+
+                            </div>
+                            <div class="container-login100-form-btn">
+                                <button class="login100-form-btn">
+                                    Login
+                                </button>
+                            </div>
+
+                            <div class="text-center p-t-12">
+                                <span class="txt1">
+                                    Or   
+                                </span>
+
+                            </div>
+                            <div class="text-center p-t-12">
+                                <a class="txt2" href="create_account.jsp">
+                                    Create your Account
+                                    <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                                </a>
+                            </div>
+
+
+
+                        </form>
+
+                        <div class="container-login100-form-btn">
+                            <form id="form1" method="post" action="https://accounts.google.com/o/oauth2/auth?scope=email+profile&" >
+                                <div>
+                                    <input type="hidden" name="response_type" value="code" />
+                                    <input type="hidden" name="client_id" value="918743542771-ki05lu38k1d2c0d0rh1ukhssr601f09n.apps.googleusercontent.com" />
+                                    <input type="hidden" name="redirect_uri" value="http://localhost:8084/ResourceSharing/loginWithGoogle" />
+                                   
+
+                                    <input type="hidden" name="approval_prompt" value="force" />
+                                    <input class="loginBtn loginBtn--google" type="submit" value="Login with Google" />
+                                </div>
+                            </form>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+     
+
+
+
+        <script src="resource/js/api.js" async defer></script>
+        <!--===============================================================================================-->	
+        <script src="resource/vendor/jquery/jquery-3.2.1.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="resource/vendor/bootstrap/js/popper.js"></script>
+        <script src="resource/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="resource/vendor/select2/select2.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="resource/vendor/tilt/tilt.jquery.min.js"></script>
+        <script >
+            $('.js-tilt').tilt({
+                scale: 1.1
+            })
+
+
+            document.getElementById("form-login").addEventListener("submit", function (evt)
+            {
+
+                var response = grecaptcha.getResponse();
+                if (response.length == 0)
+                {
+                    //reCaptcha not verified
+                    alert("please verify captcha !");
+                    evt.preventDefault();
+                    return false;
+                }
+                //captcha verified
+                //do the rest of your validations here
+
+            });
+        </script>
+        <!--===============================================================================================-->
+        <script src="js/main.js"></script>
+
+    </body>
+</html>
