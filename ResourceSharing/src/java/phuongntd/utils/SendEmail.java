@@ -26,8 +26,8 @@ public class SendEmail implements Serializable {
 
     public static void sendEmail(String email, String hashKey) {
 
-        String emailOwner = "phuongcf1998@gmail.com";
-        String password = "phuongvip89";
+        String emailOwner = "Your email here";
+        String password = "Your password";
         Properties properties = new Properties();
 
         properties.put("mail.smtp.auth", "true");
